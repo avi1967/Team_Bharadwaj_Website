@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-mode');
+            document.body.classList.add('light-mode');
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Bharadwaj - Official Aeromodelling Team</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css?v=1.2">
+    
+    <style>
+        /* Specific page HUD and plane animations */
+        .hero-hud {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            font-family: var(--font-heading);
+            color: rgba(0, 240, 255, 0.4);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+        .hud-line {
+            position: absolute;
+            background: rgba(0, 240, 255, 0.15);
+        }
+        .hud-line.vertical-left { top: 15%; left: 5%; width: 1px; height: 70%; }
+        .hud-line.vertical-right { top: 15%; right: 5%; width: 1px; height: 70%; }
+        .hud-coordinates { position: absolute; bottom: 8%; left: 6%; }
+        .hud-altitude { position: absolute; bottom: 8%; right: 6%; text-align: right; }
+        
+        .hero-grid {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center;
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        .plane-flight-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0; left: 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .svg-plane {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            fill: var(--accent-magenta-glow);
+            filter: drop-shadow(0 0 10px var(--accent-magenta));
+            transform-origin: center;
+            opacity: 0;
+            animation: flightPath 12s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+        }
+
+        @keyframes flightPath {
+            0% {
+                left: -100px;
+                top: 40%;
+                transform: rotate(15deg) scale(0.6);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            45% {
+                left: 50%;
+                top: 20%;
+                transform: rotate(-10deg) scale(0.95);
+                opacity: 1;
+            }
+            55% {
+                left: 60%;
+                top: 22%;
+                transform: rotate(5deg) scale(1);
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                left: 110%;
+                top: 30%;
+                transform: rotate(20deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* Stats Grid */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .stats-item {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-cyan-glow);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        .stats-item:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(199, 21, 133, 0.2);
+        }
+        .stats-item span {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: none;
+        }
+
+        /* Mission / Approach Layout */
+        .mission-vision-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        .section-icon {
+            font-size: 2.8rem;
+            color: var(--accent-magenta-glow);
+            margin-bottom: 1.2rem;
+            text-shadow: 0 0 10px rgba(199, 21, 133, 0.3);
+        }
+
+        /* Auto scrolling sponsors styling */
+        .carousel-sponsors {
+            overflow: hidden;
+            padding: 2rem 0;
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border: 1px solid var(--border-glass);
+            margin-bottom: 5rem;
+        }
+        .carousel-sponsors-inner {
+            display: flex;
+            width: 200%;
+            animation: marquee 25s linear infinite;
+        }
+        .carousel-sponsors-inner:hover {
+            animation-play-state: paused;
+        }
+        .sponsor-logo-box {
+            width: 16.66%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 1rem;
+        }
+        .sponsor-logo-box i {
+            font-size: 3rem;
+            color: var(--text-secondary);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        .sponsor-logo-box:hover i {
+            color: var(--accent-cyan);
+            opacity: 1;
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.5));
+        }
+        .sponsor-logo-box span {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @media(max-width:768px) {
+            .mission-vision-wrapper { grid-template-columns: 1fr; }
+            .carousel-sponsors-inner { width: 400%; }
+            .sponsor-logo-box { width: 25%; }
+            @keyframes marquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="navbar-container"></div>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-hud">
+        <div class="hud-line vertical-left"></div>
+        <div class="hud-line vertical-right"></div>
+        <div class="hud-coordinates">REF LAT: 18.5204° N | LON: 73.8567° E</div>
+        <div class="hud-altitude">SYS ALT: 120m | HDG: 285° STATUS: STABLE</div>
+    </div>
+    
+    <div class="plane-flight-container">
+        <!-- SVG Airplane icon drifting across screen -->
+        <svg class="svg-plane" viewBox="0 0 24 24">
+            <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+        </svg>
+    </div>
+
+    <div class="hero-logo-container">
+        <img src="images/logo_blue.png" alt="Team Bharadwaj Logo" class="hero-logo">
+    </div>
+    
+    <a href="#main-content" style="position: absolute; bottom: 5%; color: white; text-decoration: none; font-size: 1.5rem; animation: float 2s infinite; z-index: 5;" aria-label="Scroll Down">
+        <i class="fas fa-chevron-down"></i>
+    </a>
+</section>
+
+<!-- Main Content -->
+<div class="content" id="main-content">
+    
+    <!-- Mission & Vision -->
+    <div class="mission-vision-wrapper">
+        <div class="glass-card">
+            <div class="section-icon"><i class="fas fa-rocket"></i></div>
+            <h2 class="glow-text" style="color: var(--accent-magenta-glow); margin-bottom: 1rem;">Our Mission</h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">We aim to revolutionize aeromodelling by crafting innovative fixed-wing aircraft, competing at the highest levels while fostering a culture of creativity and technical excellence.</p>
+        </div>
+        <div class="glass-card">
+            <div class="section-icon"><i class="fas fa-eye"></i></div>
+            <h2 class="glow-text" style="color: var(--accent-magenta-glow); margin-bottom: 1rem;">Our Vision</h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">To inspire and lead the next generation of aerospace innovators, building a legacy of knowledge, passion, and groundbreaking achievements in the skies.</p>
+        </div>
+    </div>
+
+    <!-- Our Approach & Impact -->
+    <div class="mission-vision-wrapper">
+        <div class="glass-card">
+            <div class="section-icon"><i class="fas fa-cogs"></i></div>
+            <h2 class="glow-text" style="color: var(--accent-cyan); margin-bottom: 1rem;">Our Approach</h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">We thrive on collaboration, with specialized sub-teams in aerodynamic design, CFD simulation, structural fabrication, avionics routing, and real-field flight testing working in sync to transform ideas into high-flying realities.</p>
+        </div>
+        <div class="glass-card">
+            <div class="section-icon"><i class="fas fa-globe"></i></div>
+            <h2 class="glow-text" style="color: var(--accent-cyan); margin-bottom: 1rem;">Our Impact</h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">Through regional and national drone competitions, we empower students, advance local UAV research, and leave a lasting mark on the collegiate aerospace community.</p>
+        </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stats-item">20<span>Members</span></div>
+        <div class="stats-item">4<span>Domains</span></div>
+        <div class="stats-item">Top Ranks</div>
+        <div class="stats-item">Multiple Competitions</div>
+    </div>
+
+    <!-- Sponsors Marquee (Autoplay Carousel) -->
+    <div style="margin-bottom: 1.5rem; text-align: center;">
+        <h2 class="glow-text" style="font-size: 2.2rem; color: white; margin-bottom: 1.5rem;">Our Sponsors</h2>
+        <div class="carousel-sponsors">
+            <div class="carousel-sponsors-inner">
+                <div class="sponsor-logo-box"><img src="images/college_logo.png" alt="MKSSS Logo"><span>MKSSS's Cummins College of Engineering for Women, Pune</span></div>
+                <div class="sponsor-logo-box"><img src="images/solidworks_logo.png" alt="SolidWorks Logo"><span>SolidWorks</span></div>
+                <div class="sponsor-logo-box"><img src="images/ansys_logo.png" alt="Ansys Logo"><span>Ansys</span></div>
+                
+                <!-- Repeat for loop smoothness -->
+                <div class="sponsor-logo-box"><img src="images/college_logo.png" alt="MKSSS Logo"><span>MKSSS's Cummins College of Engineering for Women, Pune</span></div>
+                <div class="sponsor-logo-box"><img src="images/solidworks_logo.png" alt="SolidWorks Logo"><span>SolidWorks</span></div>
+                <div class="sponsor-logo-box"><img src="images/ansys_logo.png" alt="Ansys Logo"><span>Ansys</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="glass-card" style="text-align: center; padding: 4rem 2rem;">
+        <h2 class="glow-text" style="font-size: 2.5rem; color: var(--accent-magenta-glow); margin-bottom: 1rem;">Join the Flight</h2>
+        <p style="max-width: 700px; margin: 0 auto 2rem auto; color: var(--text-secondary); font-size: 1.15rem;">Ready to soar with Team Bharadwaj? Connect with us to support our mission to conquer the skies!</p>
+        <a href="#join-us" class="btn-primary cta-button">Join Us</a>
+    </div>
+</div>
+
+<div id="footer-container"></div>
+
+
+<script>
+    fetch('footer.html?v=1.2')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            });
+</script>
+
+<script>
+    fetch('navbar.html?v=1.2')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            });
+</script>
+<!-- Shared JavaScript -->
+<script src="js/main.js?v=1.2"></script>
+</body>
+</html>
