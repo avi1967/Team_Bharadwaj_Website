@@ -674,41 +674,46 @@ function initGalleryLightbox() {
 
 /* 9. Specifications Details Modal Launchers */
 window.planeSpecsTemplates = {
-    'sae-ddc-2024': `
+    'sae-ddc-2025': `
         <table style="width: 100%; border-collapse: collapse; font-family: var(--font-body); color: var(--text-secondary);">
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold; width: 40%;">Aircraft Type:</td><td style="padding: 0.8rem;">Fixed-wing (UAV)</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Wingspan:</td><td style="padding: 0.8rem;">1.8 meters</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">MTOW:</td><td style="padding: 0.8rem;">4.5 kilograms</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Endurance:</td><td style="padding: 0.8rem;">25 minutes</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Propulsion:</td><td style="padding: 0.8rem;">Brushless Outrunner DC Motor (1200KV)</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Fuselage Material:</td><td style="padding: 0.8rem;">Composite Carbon Fiber & XPS Foam</td></tr>
-            <tr><td style="padding: 0.8rem; font-weight: bold;">Payload Capacity:</td><td style="padding: 0.8rem;">1.2 kilograms (Water drop release system)</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Wingspan:</td><td style="padding: 0.8rem;">1 meter</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">MTOW:</td><td style="padding: 0.8rem;">1 kilogram</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Endurance:</td><td style="padding: 0.8rem;">5 minutes</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Propulsion:</td><td style="padding: 0.8rem;">Brushless Outrunner DC Motor (1050KV)</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Fuselage Material:</td><td style="padding: 0.8rem;">Balsa and Aeroply</td></tr>
+            <tr><td style="padding: 0.8rem; font-weight: bold;">Payload Capacity:</td><td style="padding: 0.8rem;">1 kilogram</td></tr>
         </table>
     `,
-    'boeing-2024': `
+    'sae-ddc-2026': `
         <table style="width: 100%; border-collapse: collapse; font-family: var(--font-body); color: var(--text-secondary);">
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold; width: 40%;">Aircraft Type:</td><td style="padding: 0.8rem;">Carbon Quadcopter (Multirotor)</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Frame Size:</td><td style="padding: 0.8rem;">450mm wheelbase</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Power Pack:</td><td style="padding: 0.8rem;">4S LiPo battery (5200mAh)</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Telemetry:</td><td style="padding: 0.8rem;">915MHz Holybro Radio Link</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Flight Controller:</td><td style="padding: 0.8rem;">Pixhawk 6C (PX4 Autopilot firmware)</td></tr>
-            <tr><td style="padding: 0.8rem; font-weight: bold;">Features:</td><td style="padding: 0.8rem;">Precision GPS hold, autonomous waypoint navigation</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold; width: 40%;">Aircraft Type:</td><td style="padding: 0.8rem;">Fixed-wing (UAV)</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Wingspan:</td><td style="padding: 0.8rem;">1 meter</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">MTOW:</td><td style="padding: 0.8rem;">1 kilogram</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Endurance:</td><td style="padding: 0.8rem;">5 minutes</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Propulsion:</td><td style="padding: 0.8rem;">Brushless Outrunner DC Motor (1050KV)</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Fuselage Material:</td><td style="padding: 0.8rem;">Balsa and Aeroply</td></tr>
+            <tr><td style="padding: 0.8rem; font-weight: bold;">Payload Capacity:</td><td style="padding: 0.8rem;">1 kilogram</td></tr>
         </table>
     `,
-    'iit-bombay-2024': `
+    'boeing-2025': `
         <table style="width: 100%; border-collapse: collapse; font-family: var(--font-body); color: var(--text-secondary);">
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold; width: 40%;">Aircraft Type:</td><td style="padding: 0.8rem;">V-tail RC Airplane</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Tail Configuration:</td><td style="padding: 0.8rem;">V-Tail with custom differential mixing</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Wingspan:</td><td style="padding: 0.8rem;">1.5 meters</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Structural Build:</td><td style="padding: 0.8rem;">Balsa wood structure with Monokote skin</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Control Surfaces:</td><td style="padding: 0.8rem;">Ailerons, Ruddervators, Throttle</td></tr>
-            <tr><td style="padding: 0.8rem; font-weight: bold;">Achievement:</td><td style="padding: 0.8rem;">Innovative Stabilizer Award for drag reduction</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold; width: 40%;">Aircraft Type:</td><td style="padding: 0.8rem;">Fixed-wing (UAV)</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Wingspan:</td><td style="padding: 0.8rem;">1 meter</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">MTOW:</td><td style="padding: 0.8rem;">1 kilogram</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Endurance:</td><td style="padding: 0.8rem;">5 minutes</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Propulsion:</td><td style="padding: 0.8rem;">Brushless Outrunner DC Motor (1050KV)</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 0.8rem; font-weight: bold;">Fuselage Material:</td><td style="padding: 0.8rem;">Balsa and Aeroply</td></tr>
+            <tr><td style="padding: 0.8rem; font-weight: bold;">Payload Capacity:</td><td style="padding: 0.8rem;">1 kilogram</td></tr>
         </table>
     `
 };
-window.planeSpecsTemplates['sae-ddc-2026'] = window.planeSpecsTemplates['sae-ddc-2024'];
-window.planeSpecsTemplates['boeing-2025'] = window.planeSpecsTemplates['boeing-2024'];
-window.planeSpecsTemplates['iit-bombay-2025'] = window.planeSpecsTemplates['iit-bombay-2024'];
+window.planeSpecsTemplates['sae-ddc-2024'] = window.planeSpecsTemplates['sae-ddc-2025'];
+window.planeSpecsTemplates['sae-ddc-2026'] = window.planeSpecsTemplates['sae-ddc-2025'];
+window.planeSpecsTemplates['boeing-2024'] = window.planeSpecsTemplates['boeing-2025'];
+window.planeSpecsTemplates['boeing-2025'] = window.planeSpecsTemplates['boeing-2025'];
+window.planeSpecsTemplates['iit-bombay-2024'] = window.planeSpecsTemplates['sae-ddc-2025'];
+window.planeSpecsTemplates['iit-bombay-2025'] = window.planeSpecsTemplates['sae-ddc-2025'];
 
 window.openPlaneSpecs = function(droneKey, title) {
     let modal = document.getElementById('specs-modal');
