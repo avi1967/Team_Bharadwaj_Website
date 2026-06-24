@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-mode');
+            document.body.classList.add('light-mode');
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Team Bharadwaj</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="css/style.css?v=1.2">
+    
+    <style>
+        .about-section {
+            margin-bottom: 4rem;
+        }
+        .about-section h2 {
+            font-size: 2.2rem;
+            color: var(--accent-magenta-glow);
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .about-card {
+            margin-bottom: 3rem;
+        }
+        .about-card h3 {
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent-magenta);
+            padding-left: 1rem;
+        }
+        .about-card p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        /* Specific carousel adjustments */
+        .carousel {
+            border-radius: 12px;
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div id="navbar-container"></div>
+
+<!-- Main Content -->
+<div class="content">
+    <div class="about-section">
+        <h2>About Team Bharadwaj</h2>
+        
+        <!-- Point 1: All-Girls Team -->
+        <div class="glass-card about-card">
+            <h3>Only All-Girls Team in SAE DDC</h3>
+            <p>We are proud to be the only all-girls team to compete in the SAE Drone Design Challenge. Breaking stereotypes and building advanced drones independently, we set a strong precedent for diversity and engineering competence in the aeromodelling landscape.</p>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <img src="images/allgirlsteam1.jpeg" alt="All-girls Team - Assembly Session">
+                    <img src="images/allgirlsteam 2.png" alt="All-girls Team - Pre-flight Checks">
+                    <img src="images/allgirlsteam 3.jpg" alt="All-girls Team - Hangar Presentation">
+                    <img src="images/allgirlsteam 4.jpg" alt="All-girls Team - Competitors Arena">
+                    <img src="images/allgirlsteam 6.jpeg" alt="All-girls Team - Award Receiving">
+                    <img src="images/allgirlsteam 7.jpeg" alt="All-girls Team - Pitch Deck Presentation">
+                    <img src="images/allgirlsteam 8.jpeg" alt="All-girls Team - Technical Inspection">
+                </div>
+            </div>
+        </div>
+
+        <!-- Point 2: Top Ranks -->
+        <div class="glass-card about-card">
+            <h3>Consistent Top 10 Placements</h3>
+            <p>Through rigid design loops, flight tests, and well-documented reports, our team has consistently finished in the Top 10 ranks in SAE India DDC and other national challenges, securing multiple awards for aerodynamics design and structure innovations.</p>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <img src="images/award 1.jpg" alt="Top 10 Ranks - National Stage Award">
+                    <img src="images/award 2.jpg" alt="Top 10 Ranks - Best Innovative Design Trophy">
+                    <img src="images/WhatsApp Image 2025-09-29 at 22.54.30.jpeg" alt="Top 10 Ranks - Competition Certification Session">
+                </div>
+            </div>
+        </div>
+
+        <!-- Point 3: In-House Fabrication -->
+        <div class="glass-card about-card">
+            <h3>In-House Design and Fabrication</h3>
+            <p>We believe in hands-on learning. From airfoil calculations (UIUC databases) and CAD modelling to wing hot-wire cutting, fuselage monokoting, and custom structural laser cutting, every single aspect of manufacturing is handled in our college laboratory by our members.</p>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <img src="images/Final plane.jpg" alt="Fabrication - Completed Fixed-wing RC Plane">
+                    <img src="images/fuse xps clamp.jpg" alt="Fabrication - Fuselage XPS Foam Clamping">
+                    <img src="images/manu1.jpg" alt="Fabrication - Hot-wire Airfoil Cutting">
+                    <img src="images/manu2.jpg" alt="Fabrication - Wing Rib Assembly and Sanding">
+                    <img src="images/manu3.png" alt="Fabrication - Laser Cutting Plywood Core">
+                    <img src="images/manu4.png" alt="Fabrication - Landing Gear Carbon Wrapping">
+                    <img src="images/manu5.png" alt="Fabrication - Aileron Beveling and Hinging">
+                    <img src="images/manu6.png" alt="Fabrication - Motor Thrust Stand Calibration">
+                    <img src="images/manu7.jpg" alt="Fabrication - Control Linkage Routing">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div id="footer-container"></div>
+
+
+<script>
+    fetch('footer.html?v=1.2')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            });
+</script>
+
+<script>
+    fetch('navbar.html?v=1.2')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            });
+</script>
+
+<!-- Shared JavaScript -->
+<script src="js/main.js?v=1.2"></script>
+</body>
+</html>
