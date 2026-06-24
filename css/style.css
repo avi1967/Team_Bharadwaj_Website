@@ -788,3 +788,25 @@ body.light-mode .mobile-nav-toggle {
 .light-mode .footer {
     background: rgba(255,255,255,0.7);
 }
+
+/* =========================
+   VIDEO PRELOADER
+   ========================= */
+
+#preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: black;
+    overflow: hidden;
+}
+
+#intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+body.loading {
+    overflow: hidden;
+}

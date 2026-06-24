@@ -758,7 +758,7 @@ function initSpecsModals() {
 
 /* 10. CTA Join Us / Sponsor Form Overlay */
 function initCtaModal() {
-    const ctaBtns = document.querySelectorAll('.cta-button, [href="#join-us"], [href="#contact-us"], [href="#contact"]');
+    const ctaBtns = document.querySelectorAll('.cta-button, [href="#join-us"], [href="#contact-us"], [href="#contact"], .contact-link');
     if (ctaBtns.length === 0) return;
 
     const ctaModal = document.createElement('div');
@@ -781,16 +781,7 @@ function initCtaModal() {
                     <label>Email Address</label>
                     <input type="email" class="form-control" name="email" required placeholder="sponsor@company.com">
                 </div>
-                <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <div class="form-group">
-                        <label>Sponsorship Tier</label>
-                        <select class="form-control" name="tier" required style="background: #0d091b; border: 1px solid rgba(255, 255, 255, 0.1);">
-                            <option value="Gold Sponsor">Gold Sponsor</option>
-                            <option value="Silver Sponsor">Silver Sponsor</option>
-                            <option value="Technical Partner">Technical Partner</option>
-                            <option value="Other">Other Sponsorship</option>
-                        </select>
-                    </div>
+                <div class="form-row" style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
                     <div class="form-group">
                         <label>Contribution Details</label>
                         <input type="text" class="form-control" name="amount" required placeholder="e.g., Funding or carbon rolls">
@@ -827,7 +818,6 @@ function initCtaModal() {
             company_name: form.querySelector('[name="company_name"]').value,
             fullname: form.querySelector('[name="fullname"]').value,
             email: form.querySelector('[name="email"]').value,
-            tier: form.querySelector('[name="tier"]').value,
             amount: form.querySelector('[name="amount"]').value,
             message: form.querySelector('[name="message"]').value
         };
