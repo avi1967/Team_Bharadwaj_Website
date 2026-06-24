@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-mode');
+            document.body.classList.add('light-mode');
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Team Bharadwaj</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="css/style.css?v=1.2">
+    
+    <style>
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .gallery-header h2 {
+            font-size: 2.2rem;
+            color: var(--accent-magenta-glow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        .gallery-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filter Tabs */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+        .tabs-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+        .gallery-tab {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            color: var(--text-secondary);
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .gallery-tab:hover,
+        .gallery-tab.active {
+            color: var(--text-primary);
+            background: var(--accent-magenta);
+            border-color: var(--accent-magenta-glow);
+            box-shadow: 0 0 12px rgba(199, 21, 133, 0.5);
+        }
+
+        /* Masonry-like Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .gallery-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .gallery-card img {
+            width: 100%;
+            max-height: 260px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.4s ease;
+        }
+        .gallery-card:hover img {
+            transform: scale(1.03);
+        }
+        .gallery-card p {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-cyan-glow);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+            margin: 0.5rem 0;
+            line-height: 1.4;
+            min-height: 2.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gallery-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.15);
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div id="navbar-container"></div>
+
+
+<!-- Main Content -->
+<div class="content">
+    <div class="gallery-header">
+        <h2>Visual Portfolio</h2>
+        <p>A peek inside our lab, test flights, and event arenas. Click on any photo to open the full-screen view mode.</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="filter-container">
+        <div class="tabs-wrapper">
+            <button class="gallery-tab active" data-filter="all">All Photos</button>
+            <button class="gallery-tab" data-filter="flight">Planes & UAVs</button>
+            <button class="gallery-tab" data-filter="manufacture">Manufacturing</button>
+            <button class="gallery-tab" data-filter="team">Team & Awards</button>
+        </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid">
+        
+        <!-- Flight/Planes category -->
+        <div class="gallery-card" data-category="flight" data-plane="true" data-plane-id="sae-ddc-2024">
+            <img src="images/Final plane.jpg" alt="Final Fixed-wing Plane Model">
+            <p>Fixed-wing UAV (SAE DDC 2024)</p>
+        </div>
+        <div class="gallery-card" data-category="flight" data-plane="true" data-plane-id="boeing-2024">
+            <img src="images/allgirlsteam 5.jpg" alt="Boeing 2024 Quadcopter Drone">
+            <p>Carbon Quadcopter Drone (Boeing 2024)</p>
+        </div>
+        <div class="gallery-card" data-category="flight" data-plane="true" data-plane-id="iit-bombay-2024">
+            <img src="images/manu 8.jpeg" alt="IIT Bombay Techfest V-tail plane">
+            <p>V-Tail RC Airplane (Techfest 2024)</p>
+        </div>
+
+        <!-- Team category -->
+        <div class="gallery-card" data-category="team">
+            <img src="images/allgirlsteam1.jpeg" alt="All-Girls Team - Presentation Stage">
+            <p>SAE DDC Pitch Deck Panel</p>
+        </div>
+        <div class="gallery-card" data-category="team">
+            <img src="images/allgirlsteam 2.png" alt="All-Girls Team - Field Inspection">
+            <p>Flight Line Prep & Calibration</p>
+        </div>
+        <div class="gallery-card" data-category="team">
+            <img src="images/allgirlsteam 3.jpg" alt="All-Girls Team - Laboratory Group Photo">
+            <p>Team Assembly in the Hangar</p>
+        </div>
+        <div class="gallery-card" data-category="team">
+            <img src="images/allgirlsteam 4.jpg" alt="All-Girls Team - Technical Review Arena">
+            <p>Pre-flight Inspection Stage</p>
+        </div>
+        <div class="gallery-card" data-category="team">
+            <img src="images/allgirlsteam 5.jpg" alt="All-Girls Team - Competitors Area">
+            <p>Technical Briefing Sessions</p>
+        </div>
+        <div class="gallery-card" data-category="team">
+            <img src="images/allgirlsteam 6.jpeg" alt="All-Girls Team - Group Ceremony">
+            <p>Stage Ceremony Celebration</p>
+        </div>
+        <div class="gallery-card" data-category="team">
+            <img src="images/allgirlsteam 7.jpeg" alt="All-Girls Team - Runway Briefing">
+            <p>Final Checklist Validation</p>
+        </div>
+        <div class="gallery-card" data-category="team">
+            <img src="images/allgirlsteam 8.jpeg" alt="All-Girls Team - Technical Board Walk">
+            <p>Jury Evaluation Rounds</p>
+        </div>
+        <div class="gallery-card" data-category="team">
+            <img src="images/allgirlsteam 9.jpeg" alt="All-Girls Team - Plane Release">
+            <p>Runway Hand-Launch Preparation</p>
+        </div>
+
+        <!-- Awards category -->
+        <div class="gallery-card" data-category="team">
+            <img src="images/award 1.jpg" alt="Awards - Stage Podium">
+            <p>Top Rank Awarding Ceremony</p>
+        </div>
+        <div class="gallery-card" data-category="team">
+            <img src="images/award 2.jpg" alt="Awards - Trophy Showcase">
+            <p>National Innovation Trophy</p>
+        </div>
+        <div class="gallery-card" data-category="team">
+            <img src="images/WhatsApp Image 2025-09-29 at 22.54.29.jpeg" alt="Awards - Certificate Session">
+            <p>Team Certification Moments</p>
+        </div>
+        <div class="gallery-card" data-category="team">
+            <img src="images/WhatsApp Image 2025-09-29 at 22.54.30.jpeg" alt="Awards - Laboratory Wall">
+            <p>Design Certificates Showcase</p>
+        </div>
+
+        <!-- Manufacturing/Workshop category -->
+        <div class="gallery-card" data-category="manufacture">
+            <img src="images/fuse xps clamp.jpg" alt="Workshop - XPS Clamping">
+            <p>Fuselage Core XPS Foam Clamping</p>
+        </div>
+        <div class="gallery-card" data-category="manufacture">
+            <img src="images/Rod bending.jpg" alt="Workshop - Rod Bending Calibration">
+            <p>Landing Gear Aluminum Bending</p>
+        </div>
+        <div class="gallery-card" data-category="manufacture">
+            <img src="images/manu1.jpg" alt="Workshop - Hot Wire Cutting">
+            <p>Hot-Wire Airfoil Profile Cut</p>
+        </div>
+        <div class="gallery-card" data-category="manufacture">
+            <img src="images/manu2.jpg" alt="Workshop - Wing Rib Sanding">
+            <p>Balsa Wood Wing Rib Assembly</p>
+        </div>
+        <div class="gallery-card" data-category="manufacture">
+            <img src="images/manu3.png" alt="Workshop - Laser Cutting Sheet">
+            <p>Core Plywood Laser Profiling</p>
+        </div>
+        <div class="gallery-card" data-category="manufacture">
+            <img src="images/manu4.png" alt="Workshop - Carbon Layup">
+            <p>Carbon-Fiber Composite Layup</p>
+        </div>
+        <div class="gallery-card" data-category="manufacture">
+            <img src="images/manu5.png" alt="Workshop - Control Hinging">
+            <p>Aileron Beveling and Hinging</p>
+        </div>
+        <div class="gallery-card" data-category="manufacture">
+            <img src="images/manu6.png" alt="Workshop - Motor Thrust Run">
+            <p>Brushless Motor Thrust Calibration</p>
+        </div>
+        <div class="gallery-card" data-category="manufacture">
+            <img src="images/manu7.jpg" alt="Workshop - Electronics Routing">
+            <p>Avionics Wiring & ESC Solder</p>
+        </div>
+        <div class="gallery-card" data-category="manufacture">
+            <img src="images/manu 8.jpeg" alt="Workshop - Monokote Skin Wrap">
+            <p>Heat-Shrink Monokote Skin Wrap</p>
+        </div>
+        <div class="gallery-card" data-category="manufacture">
+            <img src="images/manu8.jpg" alt="Workshop - Core Rib Sanding">
+            <p>Wing Structural Rib Sanding</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<div id="footer-container"></div>
+
+
+<script>
+    fetch('footer.html?v=1.2')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            });
+</script>
+
+<script>
+    fetch('navbar.html?v=1.2')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            });
+</script>
+
+<!-- Shared JavaScript -->
+<script src="js/main.js?v=1.2"></script>
+</body>
+</html>
