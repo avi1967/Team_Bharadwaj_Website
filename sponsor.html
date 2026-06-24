@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-mode');
+            document.body.classList.add('light-mode');
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsors - Team Bharadwaj</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="css/style.css?v=1.2">
+    
+    <style>
+        .sponsor-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .sponsor-header h2 {
+            font-size: 2.2rem;
+            color: var(--accent-magenta-glow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        .sponsor-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tier Containers */
+        .tier-section {
+            margin-bottom: 4rem;
+        }
+        .tier-title {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .tier-title.gold { color: #FFD700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+        .tier-title.tech { color: var(--accent-magenta-glow); text-shadow: 0 0 10px rgba(199, 21, 133, 0.3); }
+
+        /* Grid & Cards */
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .sponsor-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+        }
+        .sponsor-card.gold-card:hover {
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
+        }
+        
+        .sponsor-card.tech-card:hover {
+            border-color: rgba(199, 21, 133, 0.6);
+            box-shadow: 0 8px 30px rgba(199, 21, 133, 0.2);
+        }
+
+        .sponsor-svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.4s ease;
+        }
+        .sponsor-card:hover .sponsor-svg {
+            transform: scale(1.08) rotate(2deg);
+        }
+
+        .sponsor-card h4 {
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .sponsor-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div id="navbar-container"></div>
+
+
+<!-- Main Content -->
+<div class="content">
+    <div class="sponsor-header">
+        <h2>Our Sponsors & Partners</h2>
+        <p>We are funded and supported by progressive technological companies and academic grants that fuel our research and development in UAVs.</p>
+    </div>
+
+    <!-- Gold Sponsors Section -->
+    <div class="tier-section">
+        <h3 class="tier-title gold"><i class="fas fa-medal"></i>Sponsors</h3>
+        <div class="sponsor-grid">
+            <div class="sponsor-card gold-card">
+                <!-- Zenith Aerospace Wing SVG -->
+                <img src="images/college_logo.png" alt="MKSSS Logo">
+                <h4>MKSSS's Cummins College of Engineering for Women, Pune</h4>
+                <p>Empowering innovation in wing aerodynamics, structures, and flight control telemetry solutions.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tech Partners Section -->
+    <div class="tier-section">
+        <h3 class="tier-title tech"><i class="fas fa-tools"></i> Technical Partners</h3>
+        <div class="sponsor-grid">
+            <div class="sponsor-card tech-card">
+                <img src="images/ansys_logo.png" alt="Ansys Logo">
+                <h4>Ansys</h4>
+                <p>Assisting in finite element analysis, computational fluid dynamics, and simulation software support.</p>
+            </div>
+            <div class="sponsor-card tech-card">
+                <img src="images/solidworks_logo.png" alt="SolidWorks Logo">
+                <h4>SolidWorks</h4>
+                <p>Providing 3D CAD design software and mechanical engineering simulation tools.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div id="footer-container"></div>
+
+
+<script>
+    fetch('footer.html?v=1.2')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            });
+</script>
+
+<script>
+    fetch('navbar.html?v=1.2')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            });
+</script>
+
+<!-- Shared JavaScript -->
+<script src="js/main.js?v=1.2"></script>
+</body>
+</html>
